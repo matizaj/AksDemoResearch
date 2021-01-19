@@ -1,0 +1,22 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aksdemo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: aksdemo-deployment-pod
+  template:
+    metadata:
+      labels:
+        app: aksdemo-deployment-pod
+    spec:
+      containers:
+      - name: aksdemo-container
+        image: vsdemo.azurecr.io/aksdemo:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
